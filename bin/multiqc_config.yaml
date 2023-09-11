@@ -1,0 +1,12 @@
+title: "GDFF annotation report"
+subtitle: "Genomic data analysis pipeline"
+intro_text: "General metrics report on the quality of raw and cleaned reads, assemblies, and annotations."
+
+module_order:
+ - fastp
+ - fastqc
+ - quast
+ - prokka
+
+prokka_table: true
+prokka_fn_snames: true

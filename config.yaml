@@ -1,0 +1,60 @@
+#------------------------------------------------------------------------------------------------------------
+#			 migale/gdff-annot
+#-----------------------------------------------------------------------------------------------------
+#	GDFF-annot Analysis Pipeline. Configuration file
+
+## params
+# required
+results_folder: ""
+data_folder: ""
+tmp_dir: ""
+# optional
+#--species dependant
+#---one species
+reference: ""
+genus: ""
+species: ""
+taxon: ""
+protein_fasta: ""
+#--- more than one species
+multi_species: ""
+#--general
+gapseq_model: ""
+pathway_tools_model: ""
+seeds: ""
+
+## conda environnements
+# trimming
+short_trimming: 'fastp-0.23.1'
+long_trimming: 'filtlong-0.2.1'
+# assembly
+unicycler: 'unicycler-0.4.8'
+# annotation
+bakta: 'bakta-1.7.0'
+# quality control
+fastqc: 'fastqc-0.11.9'
+quast: 'quast-5.2.0'
+checkm: 'checkm-genome-1.1.3'
+multiqc: 'multiqc-1.12'
+gapseq: 'gapseq-vero'
+# metabolic pathway reconstruction
+m2m: 'metage2metabo-1.5.4'
+
+## threads
+threads_trimming: ''
+threads_fastqc: ''
+threads_quast: ''
+threads_checkm: ''
+threads_assembly: ''
+threads_annotation: ''
+threads_gapseq: ''
+threads_pathway_tools: ''
+threads_indiv_scopes: ''
+threads_community_analysis: ''
+
+## skip
+skip_trim: ""
+skip_annotation: ""
+skip_reports: ""
+skip_model: ""
+skip_model_analysis: ""

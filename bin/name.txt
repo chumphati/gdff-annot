@@ -1,0 +1,11 @@
+
+   ____   ____    _____   _____              _      _   _   _   _    ___    _____
+  / ___| |  _ \  |  ___| |  ___|            / \    | \ | | | \ | |  / _ \  |_   _|
+ | |  _  | | | | | |_    | |_     _____    / _ \   |  \| | |  \| | | | | |   | |
+ | |_| | | |_| | |  _|   |  _|   |_____|  / ___ \  | |\  | | |\  | | |_| |   | |
+  \____| |____/  |_|     |_|             /_/   \_\ |_| \_| |_| \_|  \___/    |_|
+
+
+Genomic data analysis pipeline for the reconstruction of the metabolic potential of bacteria suspected of playing a role in fermentation.
+Team : Migale
+Gitlab : https://forgemia.inra.fr/migale/gdff-annot

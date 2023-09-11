@@ -1,0 +1,7 @@
+SRR14415532	Leuconostoc	mesenteroides	1245	NA
+SRR9076598	Leuconostoc	kimchii	762051	NA
+SRR1655506	Leuconostoc	gasicomitatum	115778	l_gasicomitatum.faa
+SRR17250773_subreads	Latilactobacillus	sakei	1599	NA
+SRR15076472	Pediococcus	pentosaceus	1255	NA
+SRR13076873	Weissella	confusa	1583	w.confusa.fasta
+SRR25342328	Leuconostoc	gelidum	1244	NA

@@ -1,0 +1,71 @@
+
+    Gdff-annot Analysis Pipeline
+
+    [HOMEPAGE & DOCUMENTATION]: https://forgemia.inra.fr/migale/gdff-annot
+    [VERSION]: 1.0.0
+    [LICENSE]: Apache License, Version 2.0
+    [RUN GDFF-ANNOT]: gdff-annot.sh [--local OR --cluster] --data_folder <data_folder> --results_folder <results_folder> --tmp_dir <tmp_folder> <options>
+
+    [OPTIONS & PARAMETER]:
+
+    ## MAIN ARGUMENTS
+    --local / --cluster             <mandatory first parameter> Choose whether to run the analysis locally or on the Migale cluster.
+                                    If you choose to run the analysis locally, activate the Snakemake environment first.
+    --data_folder                   <mandatory> Path to a folder containing fastq data.
+                                    Example: 'data'
+    --results_folder                <mandatory> Results folder.
+                                    Example: 'results'
+    --tmp_dir                       <mandatory> Temporary files folder.
+                                    Example: 'results/tmp'
+
+    ## OPTIONAL ARGUMENTS
+    # DATA INFORMATION
+    --reference                     <default = none> Path to a reference file in fasta format.
+
+    ### IF ALL INFORMATION IS TRUE FOR ALL INPUT FILES
+    --genus                         <default = none> Genus name for annotation.
+    --species                       <default = none> Species name for annotation.
+    --protein_fasta                 <default = none> Protein fasta for annotation.
+    --taxon                         <mandatory if you want to run a metabolic model reconstruction, default = NA (not available)> Taxonomic code to be entered in this argument if there
+                                    is only one for all the data, otherwise to be entered individually in the multi-species configuration file.
+                                    Example = 1358 (Lactoccocus lactis)
+
+    ### ELSE
+    --multi_species                 <default = none> Path to a configuration txt file (can be generated with generate_multi_species_config,
+                                    cf README or 'example_dataset/example_config_multi_species.txt').
+
+    # METABOLIC PATHWAYS RECONSTRUCTION
+    --gapseq_model                  <default = yes> Model reconstruction with gapseq (without arguments).
+                                    WARNING: this mode can only be launched on the cluster as it requires to be in a bigmem queue.
+    --pathway_tools_model           <default = no> Model reconstruction with pathway-tools (without arguments).
+                                    WARNINGS:   1. Pathway-tools does not accept file names containing a . or /. If one of these signs exists in the prefix,
+                                                   please correct it otherwise this step will not be performed.
+                                                2. it requires an annotation file in which the taxon is entered, so it must be specified
+                                                   as a parameter, otherwise this step will not be carried out.
+    --seeds                         <default = bin/seeds_default.sbml> Path to an sbml file containing the elements of the culture medium.
+                                    By default, GDFF-annot uses the toy file provided by Metage2Metabo.
+
+    # THREADING
+    --general_cores                 <default = 1 (local), 32 (cluster)> Maximum number of threads snakemake will use to parallelize tasks.
+    --threads_trimming              <default = 1 (local), 8 (cluster)> Number of threads set for trimming steps.
+    --threads_fastqc                <default = 1 (local), 4 (cluster)> Number of threads set for FastQC steps.
+    --threads_quast                 <default = 1 (local), 4 (cluster)> Number of threads set for Quast steps.
+    --threads_checkm                <default = 1 (local), 4 (cluster)> Number of threads set for CheckM steps.
+    --threads_assembly              <default = 1 (local), 12 (cluster)> Number of threads set for assembly steps.
+    --threads_annotation            <default = 1 (local), 8 (cluster)> Number of threads set for annotation steps.
+    --threads_gapseq                <default = 1 (local), 32 (cluster)> Number of threads set for metabolic pathway reconstruction with gapseq.
+    --threads_pathway_tools         <default = 1 (local), 32 (cluster)> Number of threads set for metabolic pathway reconstruction with pathway-tools.
+    --threads_indiv_scopes          <default = 1 (local), 10 (cluster)> Number of threads set individual model analysis.
+    --threads_community_analysis    <default = 1 (local), 10 (cluster)> Number of threads set community model analysis.
+
+    # SKIP STEPS
+    --skip_trim                     <default = no> Skip trimming.
+    --skip_annotation               <default = no> Skip annotation (and metabolic pathways' reconstruction if no annotation file(s) are provided).
+    --skip_reports                  <default = no> Skip FastQC, Quast, CheckM, Bakta and MultiQC reports.
+    --skip_model                    <default = no> Skip metabolic pathways' reconstruction.
+    --skip_model_analysis           <default = no> Skip individual and community analysis.
+
+    ## OTHERS
+    --help                          Display this help message.
+    --verbose                       Display more snakemake information on the different steps.
+
